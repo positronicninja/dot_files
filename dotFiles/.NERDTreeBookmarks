@@ -1,0 +1,4 @@
+hosts /etc/hosts
+known_hosts /Users/development/.ssh/known_hosts
+--Projects /Users/development/Projects/
+-Hopestreet /Users/development/Projects/HopeStreet/
