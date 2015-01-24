@@ -1,4 +1,3 @@
 haproxy /etc/haproxy/haproxy.cfg
 hosts /etc/hosts
-known_hosts /Users/development/.ssh/known_hosts
 
