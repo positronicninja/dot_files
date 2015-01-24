@@ -1,0 +1,108 @@
+#! /usr/bin/perl -w
+
+use strict;
+use File::Copy;
+use File::Path qw(make_path);
+
+sub file_names
+{
+    return qw{
+        .ackrc
+        .bash_profile
+        .bashrc
+        bash_completion
+        .config/fish/config.fish
+        .consularc
+        .dir_colors
+        .gemrc
+        .gitconfig
+        .gitignore
+        .git-completion.sh
+        .htoprc
+        .inputrc
+        .irbrc
+        .irssi
+        .rdebugrc
+        .rvmrc
+        .screenrc
+        .sh_aliases
+        .shrc
+        .slate
+        .ssh/config
+        .tmux.conf
+        .vimrc
+        .vimrc_files
+        .vim/vimrc.mine
+        .zprofile
+        .zshrc
+        .zshenv
+        bin/diff_painter.pl
+        bin/tree.sh
+        bin/tpm
+        bin/tpc
+        bin/tpi
+        bin/tpcert
+        bin/hub
+        bin/git-checkout-by-match
+        bin/redmine-ticket-status
+        bin/git-rmbranch
+        bin/git-large
+        bin/git-stale-remote-branches
+        bin/bundle-update-lockfile
+        .completion
+        soloistrc
+        Cheffile
+        Cheffile.lock
+    };
+}
+
+
+link_files();
+
+sub get_timestamp {
+   my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime(time);
+   if ($mon < 10) { $mon = "0$mon"; }
+   if ($hour < 10) { $hour = "0$hour"; }
+   if ($min < 10) { $min = "0$min"; }
+   if ($sec < 10) { $sec = "0$sec"; }
+   $year=$year+1900;
+
+   return $year . $mon . $mday . '_' . $hour . '_' . $min;
+}
+
+sub file_links
+{
+    my %file_links = map {glob("~/$_") => glob("~/.config_files/dotFiles/$_")} file_names();
+    return %file_links;
+}
+
+sub backup_links
+{
+    my %backup_links = map {glob("~/$_") => glob("~/.config_files/backups/$_")} file_names();
+    return %backup_links;
+}
+
+sub link_files
+{
+    make_path(glob('~/bin'));
+    my %file_links = file_links();
+    my %backup_links = backup_links();
+    my $backup_date = get_timestamp();
+
+    for my $file (keys %file_links) {
+        my $source_file = $file_links{$file};
+        if (-e $source_file) {
+            if (-l $file) {
+                unlink $file;
+            } elsif (-e $file) {
+                move($file, "$backup_links{$file}.${backup_date}");
+                print("Backed up ${file} to $backup_links{$file}.${backup_date}\n");
+            }
+            my $symlink_exists = eval { symlink($source_file, $file); 1 };
+            die "Symlinking unsuccessful" unless $symlink_exists;
+            print "Linking $file Verified\n";
+        }
+    }
+
+    print "\nLinking Complete\n";
+}
