@@ -36,6 +36,7 @@ sub file_names
         .vimrc
         .vimrc_files
         .vim/vimrc.mine
+        .vim/colors/railscasts.vim
         .zprofile
         .zshrc
         .zshenv

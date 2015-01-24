@@ -35,6 +35,7 @@ sub file_names
         .vimrc
         .vimrc_files
         .vim/vimrc.mine
+        .vim/colors/railscasts.vim
         .zprofile
         .zshrc
         .zshenv
@@ -103,6 +104,8 @@ sub link_files
                 move($file, $backup_file);
                 print("Backed up ${file} to $backup_file\n");
             }
+            my ($filename, $path) = fileparse($file);
+            make_path(glob($path));
             my $symlink_exists = eval { symlink($source_file, $file); 1 };
             die "Symlinking unsuccessful" unless $symlink_exists;
             print "Linking $file Verified\n";
