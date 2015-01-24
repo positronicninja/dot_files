@@ -3,6 +3,7 @@
 use strict;
 use File::Copy;
 use File::Path qw(make_path);
+use File::Basename qw(fileparse);
 
 sub file_names
 {
@@ -91,12 +92,15 @@ sub link_files
 
     for my $file (keys %file_links) {
         my $source_file = $file_links{$file};
+        my $backup_file = "$backup_links{$file}.${backup_date}";
         if (-e $source_file) {
             if (-l $file) {
                 unlink $file;
             } elsif (-e $file) {
-                move($file, "$backup_links{$file}.${backup_date}");
-                print("Backed up ${file} to $backup_links{$file}.${backup_date}\n");
+                my ($filename, $path) = fileparse($backup_file);
+                make_path(glob($path));
+                move($file, $backup_file);
+                print("Backed up ${file} to $backup_file\n");
             }
             my $symlink_exists = eval { symlink($source_file, $file); 1 };
             die "Symlinking unsuccessful" unless $symlink_exists;
