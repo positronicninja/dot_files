@@ -10,6 +10,8 @@ noremap n k
 noremap k c
 noremap , n
 
+map <silent> AA :set invnumber<cr>
+
 nmap <D-[> <<
 nmap <D-]> >>
 vmap <D-[> <gv
