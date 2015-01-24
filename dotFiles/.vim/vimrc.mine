@@ -4,8 +4,8 @@ inoremap hh <Esc>
 inoremap ii <Esc>
 
 noremap s l
-noremap n j
-noremap t k
+noremap t j
+noremap n k
 
 noremap k c
 noremap , n
