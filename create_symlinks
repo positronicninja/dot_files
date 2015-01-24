@@ -29,7 +29,7 @@ sub file_names
         .shrc
         .slate
         .ssh/config
-        .tmux.conf
+        tmux.conf
         .vimrc
         .vimrc_files
         .vim/vimrc.mine
