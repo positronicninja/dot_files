@@ -1,0 +1,23 @@
+" Quickly get out of insert mode without your fingers having to leave the
+" home row (either use 'hh' or 'ii')
+inoremap hh <Esc>
+inoremap ii <Esc>
+
+noremap s l
+noremap n j
+noremap t k
+
+noremap k c
+noremap , n
+
+nmap <D-[> <<
+nmap <D-]> >>
+vmap <D-[> <gv
+vmap <D-]> >gv
+
+set shell=/bin/sh
+set noshelltemp
+
+let NERDTreeMapOpenInTab='\t'
+
+set mouse=a

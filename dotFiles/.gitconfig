@@ -1,0 +1,5 @@
+[user]
+  name = David Higgins
+  email = development@positronic.ninja
+[mergetool]
+  keepBackup = true

@@ -1,0 +1,211 @@
+# Configs
+config defaultToCurrentScreen true
+config nudgePercentOf screenSize
+config resizePercentOf screenSize
+config secondsBetweenRepeat 0.1
+config checkDefaultsOnLoad true
+config focusCheckWidthMax 3000
+config keyboardLayout dvorak
+config windowHintsShowIcons true
+config windowHintsIgnoreHiddenWindows false
+config windowHintsDuration 5
+config windowHintsSpread true
+config windowHintsOrder leftToRight
+config windowHintsIconAlpha .9
+config windowHintsRoundedCornerSize 14
+config gridRoundedCornerSize 20
+config gridCellRoundedCornerSize 15
+config windowHintsFontColor 255;255;255;1
+config windowHintsBackgroundColor 30;30;30;.8
+config windowHintsTopLeftY (windowSizeY/6);0
+config windowHintsFontName Inconsolata
+config windowHintsFontSize 60
+config orderScreensLeftToRight true
+
+# Monitor Aliases
+alias mon-laptop      	  1680x1050
+alias mon-thunderbolt     2560x1440
+alias mon-1080		        1920x1080
+
+alias screen-one          0
+alias screen-two          1
+alias screen-three        3
+
+# Misc Aliases
+alias showHintsLeftHand hint AOEUIYQJKX
+alias showNormalHint hint AOEUIDHTNSYXFBPKGMCW
+alias browser 'Safari'
+alias editor 'Sublime Text'
+
+# Abstract positions
+alias full          move screenOriginX-5;screenOriginY                  screenSizeX+5;screenSizeY
+alias tophalf       move screenOriginX-5;screenOriginY                  screenSizeX+5;screenSizeY/2
+alias bottomhalf    move screenOriginX-5;screenOriginY+screenSizeY/2    screenSizeX+5;screenSizeY/2
+alias lefthalf      move screenOriginX-5;screenOriginY                  (screenSizeX/2)+5;screenSizeY
+alias righthalf     move screenOriginX+screenSizeX/2;screenOriginY    	(screenSizeX/2);screenSizeY
+alias left2thirds   move screenOriginX-5;screenOriginY                  (screenSizeX/3*2)+5;screenSizeY
+alias right2thirds  move screenOriginX+screenSizeX/3;screenOriginY    	(screenSizeX/3*2);screenSizeY
+alias rightmost     move screenOriginX+screenSizeX*0.4;screenOriginY  	screenSizeX*0.6;screenSizeY
+alias rightless     move screenOriginX+screenSizeX*0.6;screenOriginY  	screenSizeX*0.4;screenSizeY
+alias leftmost      move screenOriginX-5;screenOriginY                  screenSizeX*0.6;screenSizeY
+alias leftless      move screenOriginX-5;screenOriginY                  screenSizeX*0.4;screenSizeY
+
+alias bluetooth-on 	shell '/usr/local/bin/blueutil power 1'
+alias bluetooth-off	shell '/usr/local/bin/blueutil power 0'
+alias bluetooth-toggle shell '~/Code/bash/togglebluetooth.sh'
+
+
+# Concrete positions
+alias 1-full        move screenOriginX;screenOriginY screenSizeX;screenSizeY        ${mon-laptop}
+alias 1-left        move screenOriginX;screenOriginY screenSizeX/2;screenSizeY      ${mon-laptop}
+alias 1-right       move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY         ${mon-laptop}
+
+alias 2-full        move screenOriginX;screenOriginY screenSizeX;screenSizeY        ${mon-thunderbolt}
+alias 2-left        move screenOriginX;screenOriginY screenSizeX/2;screenSizeY      ${mon-thunderbolt}
+alias 2-right       move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY         ${mon-thunderbolt}
+alias 2-righttop    move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY/2       ${mon-thunderbolt}
+alias 2-rightbottom move screenOriginX+screenSizeX/2;screenOriginY+screenSizeY/2 	screenSizeX/2;screenSizeY/2       ${mon-thunderbolt}
+
+# 3 Monitor layout
+layout 3monitors BEFORE shell path:~/ '/usr/local/bin/blueutil power 1'
+#layout 3monitors 'iTerm':MAIN_FIRST                    ${2-rightbottom} |  ${1-left}
+layout 3monitors 'Safari':REPEAT                        ${lefthalf}         ${screen-three}
+layout 3monitors 'Trello':REPEAT                        ${lefthalf}         ${screen-one}
+layout 3monitors 'MindMeister':REPEAT                   ${full}             ${screen-one}
+layout 3monitors 'Sublime Text 2':REPEAT                ${righthalf}        ${screen-three}
+layout 3monitors 'Sublime Text':REPEAT                  ${righthalf}        ${screen-three}
+layout 3monitors 'Atom':REPEAT                          ${lefthalf}         ${screen-three}
+layout 3monitors 'Mail':MAIN_FIRST                      ${full}             ${screen-two}
+layout 3monitors 'Airmail':MAIN_FIRST                   ${full}             ${screen-two}
+layout 3monitors 'Xcode':MAIN_FIRST                     ${full}             ${screen-three}
+layout 3monitors 'Eclipse':REPEAT                       ${right2thirds}     ${screen-three}
+layout 3monitors 'iTunes':REPEAT                        ${full}             ${screen-two}
+layout 3monitors 'Tower':REPEAT                         ${full}             ${screen-two}
+layout 3monitors 'Evernote':REPEAT                      ${full}             ${screen-two}
+layout 3monitors 'Sequel Pro':REPEAT                    ${lefthalf}         ${screen-one}
+layout 3monitors 'ForkLift':REPEAT                      ${righthalf}        ${screen-one}
+layout 3monitors 'Reeder':REPEAT                        ${full}             ${screen-two}
+layout 3monitors 'Google Chrome':REPEAT:IGNORE_FAIL     ${full}             ${screen-two}
+
+# 2 Monitor layout
+layout 2monitors BEFORE shell path:~/ '/usr/local/bin/blueutil power 1'
+#layout 2monitors 'iTerm':MAIN_FIRST                    ${2-rightbottom} | 	${1-left}
+layout 2monitors 'Safari':REPEAT                        ${righthalf}			 ${mon-thunderbolt}
+layout 2monitors 'Trello':REPEAT                        ${lefthalf}        ${mon-thunderbolt}
+layout 2monitors 'MindMeister':REPEAT                   ${full}			       ${mon-thunderbolt}
+layout 2monitors 'Sublime Text 2':REPEAT                ${righthalf}       ${mon-thunderbolt}
+layout 2monitors 'Sublime Text':REPEAT              	  ${lefthalf}		     ${mon-thunderbolt}
+layout 2monitors 'Atom':REPEAT                      	  ${lefthalf}		     ${mon-thunderbolt}
+layout 2monitors 'Mail':MAIN_FIRST                      ${full}				     ${mon-laptop}
+layout 2monitors 'Xcode':REPEAT                         ${right2thirds} 	 ${mon-thunderbolt}
+layout 2monitors 'Eclipse':REPEAT                       ${right2thirds} 	 ${mon-thunderbolt}
+layout 2monitors 'iTunes':REPEAT                        ${full}				     ${mon-laptop}
+layout 2monitors 'Tower':REPEAT                      	  ${full}				     ${mon-laptop}
+layout 2monitors 'Evernote':REPEAT                     	${full}				     ${mon-laptop}
+layout 2monitors 'Sequel Pro':REPEAT                    ${lefthalf}		     ${mon-thunderbolt}
+layout 2monitors 'ForkLift':REPEAT 	                  	${full}				     ${mon-laptop}
+layout 2monitors 'Reeder':REPEAT 	                  	  ${full}				     ${mon-laptop}
+layout 2monitors 'Google Chrome':REPEAT:IGNORE_FAIL 	  ${full}				     ${mon-laptop}
+
+# 1 Monitor layout
+#layout 1monitor AFTER shell path:~/ '/usr/local/bin/blueutil power 0'
+layout 1monitor 'Sublime Text 2':MAIN_FIRST             ${right2thirds}
+layout 1monitor 'Sublime Text':MAIN_FIRST               ${right2thirds}
+layout 1monitor 'Atom':MAIN_FIRST                       ${right2thirds}
+layout 1monitor 'Safari':REPEAT                         ${lefthalf}
+layout 1monitor 'Trello':REPEAT                         ${lefthalf}
+layout 1monitor 'Mail':MAIN_FIRST                       ${full}
+layout 1monitor 'Xcode':REPEAT                          ${full}
+layout 1monitor 'Eclipse':REPEAT                        ${full}
+layout 1monitor 'iTunes':REPEAT                         ${full}
+layout 1monitor 'Tower':REPEAT                      	  ${left2thirds}
+layout 1monitor 'Evernote':REPEAT                      	${left2thirds}
+layout 1monitor 'Sequel Pro':REPEAT                    	${lefthalf}
+layout 1monitor 'ForkLift':REPEAT 	                  	${full}
+layout 1monitor 'Reeder':REPEAT 	                  	  ${full}
+layout 1monitor 'Google Chrome':REPEAT:IGNORE_FAIL		  ${full}
+
+# Default Layouts
+default 3monitors resolutions:${mon-laptop};${mon-thunderbolt};${mon-thunderbolt}
+default 2monitors resolutions:${mon-laptop};${mon-thunderbolt}
+default 1monitor  resolutions:${mon-laptop}
+
+# ======================================
+# The HYPER key
+# ======================================
+
+alias hyper cmd;alt;ctrl;shift
+
+# Numpad location Bindings
+bind pad0:${hyper} ${showHintsLeftHand}
+bind pad1:${hyper} ${leftless}
+bind pad2:${hyper} push bottom bar-resize:screenSizeY/2
+bind pad3:${hyper} ${rightless}
+bind pad4:${hyper} ${lefthalf}
+bind pad5:${hyper} ${full}
+bind pad6:${hyper} ${righthalf}
+bind pad7:${hyper} ${leftmost}
+bind pad8:${hyper} push top bar-resize:screenSizeY/2
+bind pad9:${hyper} ${rightmost}
+#bind padEnter grid padding:5 ${mon-laptop}:6,2 ${mon-thunderbolt}:8,3
+bind pad+:${hyper} throw next
+bind pad.:${hyper} focus behind
+bind pad*:${hyper} layout 2monitors
+bind pad/:${hyper} layout 1monitor
+
+bind a:${hyper} ${showNormalHint}
+bind d:${hyper} grid padding:5 0:6,2 1:8,0
+
+bind b:${hyper} ${bluetooth-toggle}
+
+# Location bindings
+bind h:${hyper} ${lefthalf}
+bind c:${hyper} ${full}
+bind s:${hyper} ${righthalf}
+bind t:${hyper} ${tophalf}
+bind n:${hyper} ${bottomhalf}
+bind g:${hyper} ${left2thirds}
+bind l:${hyper} ${right2thirds}
+bind r:${hyper} throw next
+
+# Resize Bindings
+#bind r:${hyper} ${leftmost}
+#bind g:${hyper} ${rightmost}
+
+# Focus Bindings
+bind right:${hyper}    focus right
+bind left:${hyper}     focus left
+bind up:${hyper}       focus up
+bind down:${hyper}     focus down
+
+# App bindings
+bind u:${hyper} focus ${browser} > show "Safari"
+bind e:${hyper} focus ${editor}
+#bind x:${hyper} focus 'Xcode'
+#bind g:${hyper} focus 'GitHub'
+#bind m:${hyper} focus 'Mail'
+#bind i:${hyper} focus 'iTerm'
+#bind o:${hyper} focus 'Path Finder'
+
+# Snapshots
+#bind 1:cmd;alt;ctrl snapshot Save1 save-to-disk
+#bind 2:cmd;alt;ctrl snapshot Save2 save-to-disk
+bind 3:cmd;alt;ctrl snapshot Save3 save-to-disk
+bind 4:cmd;alt;ctrl snapshot Save4 save-to-disk
+bind 5:cmd;alt;ctrl snapshot Save5 save-to-disk
+bind 6:cmd;alt;ctrl snapshot Save6 save-to-disk
+bind 7:cmd;alt;ctrl snapshot Save7 save-to-disk
+bind 8:cmd;alt;ctrl snapshot Save8 save-to-disk
+bind 9:cmd;alt;ctrl snapshot Save9 save-to-disk
+bind 0:cmd;alt;ctrl snapshot Save0 save-to-disk
+
+bind 1:${hyper} layout 			  1monitor
+bind 2:${hyper} layout 			  2monitors
+bind 3:${hyper} activate-snapshot Save3
+bind 4:${hyper} activate-snapshot Save4
+bind 5:${hyper} activate-snapshot Save5
+bind 6:${hyper} activate-snapshot Save6
+bind 7:${hyper} activate-snapshot Save7
+bind 8:${hyper} activate-snapshot Save8
+bind 9:${hyper} activate-snapshot Save9
+bind 0:${hyper} activate-snapshot Save0
