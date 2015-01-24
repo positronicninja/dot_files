@@ -1,0 +1,5 @@
+-Nginx /home/deployer/nginx/sites-available
+Current /home/deployer/apps/production.hopestreet.ca/current
+Releases /home/deployer/apps/production.hopestreet.ca/releases
+Shared /home/deployer/apps/production.hopestreet.ca/shared
+
