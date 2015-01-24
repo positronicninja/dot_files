@@ -19,5 +19,6 @@ set shell=/bin/sh
 set noshelltemp
 
 let NERDTreeMapOpenInTab='\t'
+let NERDTreeShowHidden=1
 
 set mouse=a
