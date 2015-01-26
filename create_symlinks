@@ -88,6 +88,7 @@ sub backup_links
 sub link_files
 {
     make_path(glob('~/bin'));
+    make_path(glob('~/.ssh/tmp'));
     my %file_links = file_links();
     my %backup_links = backup_links();
     my $backup_date = get_timestamp();
