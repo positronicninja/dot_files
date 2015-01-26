@@ -64,6 +64,13 @@ set termencoding=utf-8
 autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
 autocmd FileType html,xhtml,xml,htmldjango,jinjahtml,eruby,mako source ~/.vim/bundle/closetag/plugin/closetag.vim
 
+" Toggle TagBar
+nnoremap zz :TagbarToggle<CR>
+let g:tagbar_usearrows        = 1
+let g:tagbar_singleclick      = 1
+let g:tagbar_indent           = 1
+let g:tagbar_show_visibility  = 0
+
 let NERDTreeMapOpenInTab='\t'
 let NERDTreeMapOpenInTabSilent='O'
 let NERDTreeMapOpenSplit='E'
