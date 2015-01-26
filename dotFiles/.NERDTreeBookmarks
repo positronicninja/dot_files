@@ -1,4 +1,7 @@
+--Projects /Users/development/Projects
+-HopeStreet /Users/development/Projects/HopeStreet
+^hopestreet.ca /Users/development/Projects/HopeStreet/hopestreet.ca
+^office.hopestreet.ca /Users/development/Projects/HopeStreet/office.hopestreet.ca
 hosts /etc/hosts
 known_hosts /Users/development/.ssh/known_hosts
---Projects /Users/development/Projects/
--Hopestreet /Users/development/Projects/HopeStreet/
+
