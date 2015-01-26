@@ -1,4 +1,9 @@
 let mapleader = "-"
+nmap s <Plug>(easymotion-s2)
+nmap t <Plug>(easymotion-t2)
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+
 " Quickly get out of insert mode without your fingers having to leave the
 " home row (either use 'hh' or 'ii')
 inoremap hh <Esc>
