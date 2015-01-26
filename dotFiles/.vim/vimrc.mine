@@ -18,11 +18,15 @@ let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 0
 
 noremap s l
-noremap t j
-noremap n k
+" noremap t j
+" noremap n k
+nnoremap t gj
+nnoremap n gk
+nnoremap j gj
+nnoremap k gk
 
-noremap k c
-noremap , n
+" noremap k /c
+" noremap , /n
 
 map <silent> AA :set invnumber<cr>
 
