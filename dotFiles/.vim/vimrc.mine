@@ -42,7 +42,7 @@ vmap <D-]> >gv
 
 colorscheme railscasts
 
-set shell=/bin/sh
+set shell=/usr/local/bin/bash
 set noshelltemp
 
 let NERDTreeMapOpenInTab='\t'
