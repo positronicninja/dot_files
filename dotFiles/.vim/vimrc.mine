@@ -81,6 +81,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+" NERDTree
+map ` :NERDTreeToggle<CR>
 let NERDTreeMapOpenInTab='\t'
 let NERDTreeMapOpenInTabSilent='O'
 let NERDTreeMapOpenSplit='E'
@@ -90,6 +92,7 @@ let NERDTreeMapJumpPrevSibling='H'
 let NERDTreeMapJumpFirstChild='N'
 let NERDTreeMapJumpLastChild='T'
 let NERDTreeShowHidden=1
+let NERDTreeMouseMode=3
 
 " Open a NERDTree automatically when vim starts up if no files were specified
 autocmd StdinReadPre * let s:std_in=1
