@@ -1,8 +1,8 @@
 [user]
-  name = David Higgins
-  email = development@positronic.ninja
+	name = David Higgins
+	email = development@positronic.ninja
 [mergetool]
-  keepBackup = true
+	keepBackup = true
 [mergetool "Kaleidoscope"]
   cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
   trustexitcode = true
