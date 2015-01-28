@@ -93,6 +93,14 @@ let NERDTreeMapJumpLastChild='T'
 let NERDTreeShowHidden=1
 let NERDTreeMouseMode=2
 
+" Folding
+set foldlevelstart=100
+set foldmethod=syntax
+set nofoldenable
+nnoremap  <Space>                   za
+au        BufWinLeave               *.* mkview
+au!       BufReadPost,BufWritePost  *.* silent loadview
+
 
 " Open a NERDTree automatically when vim starts up if no files were specified
 autocmd StdinReadPre * let s:std_in=1
