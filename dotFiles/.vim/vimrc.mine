@@ -28,8 +28,6 @@ nmap <Leader><Leader>M :set noexpandtab tabstop=4 softtabstop=2 shiftwidth=2<CR>
 nmap <Leader><Leader>m :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
 
 noremap s l
-" noremap t j
-" noremap n k
 nnoremap t gj
 nnoremap n gk
 nnoremap j gj
@@ -39,11 +37,6 @@ nnoremap k gk
 " noremap , /n
 
 map <silent> AA :set invnumber<cr>
-
-nmap <D-[> <<
-nmap <D-]> >>
-vmap <D-[> <gv
-vmap <D-]> >gv
 
 colorscheme railscasts
 
