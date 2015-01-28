@@ -22,10 +22,10 @@ let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 0
 
-nmap <Leader>t :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
-nmap <Leader>T :set expandtab tabstop=4 shiftwidth=4 softtabstop=2<CR>
-nmap <Leader>M :set noexpandtab tabstop=4 softtabstop=2 shiftwidth=2<CR>
-nmap <Leader>m :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
+nmap <Leader><Leader>t :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
+nmap <Leader><Leader>T :set expandtab tabstop=4 shiftwidth=4 softtabstop=2<CR>
+nmap <Leader><Leader>M :set noexpandtab tabstop=4 softtabstop=2 shiftwidth=2<CR>
+nmap <Leader><Leader>m :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
 
 noremap s l
 " noremap t j
