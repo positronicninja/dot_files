@@ -101,6 +101,8 @@ nnoremap  <Space>                   za
 au        BufWinLeave               *.* mkview
 au!       BufReadPost,BufWritePost  *.* silent loadview
 
+" Taboo
+let g:taboo_tab_format = '%m%W - %f '
 
 " Open a NERDTree automatically when vim starts up if no files were specified
 autocmd StdinReadPre * let s:std_in=1
