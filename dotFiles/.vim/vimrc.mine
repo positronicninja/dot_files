@@ -1,8 +1,13 @@
 let mapleader = "-"
-nmap s <Plug>(easymotion-s2)
-nmap t <Plug>(easymotion-t2)
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
+
+" EasyMotion
+let g:EasyMotion_smartcase = 1
+nmap  <Leader>s  <Plug>(easymotion-s2)
+nmap  m          <Plug>(easymotion-next)
+nmap  M          <Plug>(easymotion-prev)
+map   /          <Plug>(easymotion-sn)
+" nmap <Leader>t <Plug>(easymotion-t2)
+" omap /         <Plug>(easymotion-tn)
 
 " Quickly get out of insert mode without your fingers having to leave the
 " home row (either use 'ii')
