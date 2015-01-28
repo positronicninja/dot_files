@@ -114,3 +114,8 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " autocmd BufEnter * NERDTreeMirror
 
 set mouse=a
+
+if has("clipboard")
+    set clipboard=unnamed
+endif
+
