@@ -31,6 +31,7 @@ sub file_names
         .shrc
         .slate
         .ssh/config
+        .tigrc
         .tmux.conf
         .vimrc
         .vimrc_files
