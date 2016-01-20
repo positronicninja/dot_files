@@ -1,17 +1,25 @@
-let mapleader = "-"
+set cursorline                                    " Highlight current line
+set autoread                                      " Reload files that have changed
+
+
+" Use CTRL-S for saving, also in Insert mode
+noremap   <C-S>         :update<CR>
+vnoremap  <C-S>    <C-C>:update<CR>
+inoremap  <C-S>    <C-O>:update<CR>
 
 " EasyMotion
 let g:EasyMotion_smartcase = 1
 nmap  <Leader>s  <Plug>(easymotion-s2)
 nmap  m          <Plug>(easymotion-next)
 nmap  M          <Plug>(easymotion-prev)
-map   /          <Plug>(easymotion-sn)
+map   <C-f>      <Plug>(easymotion-sn)
 " nmap <Leader>t <Plug>(easymotion-t2)
 " omap /         <Plug>(easymotion-tn)
 
 " Quickly get out of insert mode without your fingers having to leave the
 " home row (either use 'ii')
-inoremap ii <Esc>
+inoremap ii <Esc>`^
+inoremap <Esc> <Esc>`^
 
 " Ctrl-P
 let g:ctrlp_map = ';'
@@ -35,6 +43,65 @@ nnoremap k gk
 
 " noremap k /c
 " noremap , /n
+
+if has("gui_macvim") && has("gui_running")
+  " Map command-[ and command-] to indenting or outdenting
+  " while keeping the original selection in visual mode
+
+  vmap <D-]> >gv
+  vmap <D-[> <gv
+
+  nmap <D-]> >>
+  nmap <D-[> <<
+
+  omap <D-]> >>
+  omap <D-[> <<
+
+  imap <D-]> <Esc>>>i
+  imap <D-[> <Esc><<i]
+
+  " Bubble single lines
+  nmap <D-n> [e==
+	nmap <D-t> ]e==
+	nmap <D-k> [e==
+	nmap <D-j> ]e==
+	imap <D-k> <Esc>[e==gi
+	imap <D-j> <Esc>]e==gi
+
+   " Bubble multiple lines
+	vmap <D-n> [e==gv
+	vmap <D-t> ]e==gv
+	vmap <D-k> [e==gv
+	vmap <D-j> ]e==gv
+else
+	" Map command-[ and command-] to indenting or outdenting
+	" while keeping the original selection in visual mode
+	vmap ‘ >gv
+	vmap “ <gv
+
+	nmap ‘ >>
+	nmap “ <<
+
+	omap ‘ >>
+	omap “ <<
+
+	imap ‘ <Esc>>>i
+	imap “ <Esc><<i
+
+	" Bubble single lines
+	nmap <Esc>n [e==
+	nmap <Esc>t ]e==
+	nmap <Esc>k [e==
+	nmap <Esc>j ]e==
+	imap <Esc>k <Esc>[e==gi
+	imap <Esc>j <Esc>]e==gi
+
+	" Bubble multiple lines
+	vmap <Esc>n [e==gv
+	vmap <Esc>t ]e==gv
+	vmap <Esc>k [e==gv
+	vmap <Esc>j ]e==gv
+endif
 
 map <silent> AA :set invnumber<cr>
 
@@ -79,6 +146,9 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+" NERDComment
+map <D-/> <Plug>NERDCommenterToggle
+
 " NERDTree
 map ` :NERDTreeToggle<CR>
 let NERDTreeMapOpenInTab='T'
@@ -93,27 +163,47 @@ let NERDTreeMapJumpLastChild='T'
 let NERDTreeShowHidden=1
 let NERDTreeMouseMode=2
 
+" Open a NERDTree automatically when vim starts up if no files were specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if !argc() && !exists("s:std_in") | NERDTree | endif
+
+" Close vim if the only window left open is a NERDTree
+if !has('gui_running')
+  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+endif
+" autocmd BufEnter * if !argc() && !exists("s:std_in") | NERDTreeToggle | endif
+" autocmd BufEnter * NERDTreeMirror
+
 " Folding
 set foldlevelstart=100
 set foldmethod=syntax
 set nofoldenable
-nnoremap  <Space>                   za
+nnoremap  <silent> <Space>          @=(foldlevel('.')?'za':"\<Space>")<CR>
 au        BufWinLeave               *.* mkview
 au!       BufReadPost,BufWritePost  *.* silent loadview
 
 " Taboo
 let g:taboo_tab_format = '%m%W - %f '
 
-" Open a NERDTree automatically when vim starts up if no files were specified
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if !argc() && !exists("s:std_in") | NERDTree | endif
+" IndentLine
+let g:indentLine_color_term = 239
+let g:indentLine_char = '┆'
 
-" Close vim if the only window left open is a NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-" autocmd BufEnter * if !argc() && !exists("s:std_in") | NERDTreeToggle | endif
-" autocmd BufEnter * NERDTreeMirror
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
 
-set mouse=a
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+
+if has("mouse")
+  set mouse=a
+  set mousehide
+endif
+
+if has('mouse_sgr')
+    set ttymouse=sgr
+endif
 
 if has("clipboard")
     set clipboard=unnamed

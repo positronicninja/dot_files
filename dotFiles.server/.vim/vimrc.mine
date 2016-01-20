@@ -40,9 +40,9 @@ nmap <D-]> >>
 vmap <D-[> <gv
 vmap <D-]> >gv
 
-colorscheme railscasts
+" colorscheme railscasts
 
-set shell=/usr/local/bin/bash
+set shell=/bin/bash
 set noshelltemp
 
 " Unite
