@@ -42,7 +42,7 @@ vmap <D-]> >gv
 
 " colorscheme railscasts
 
-set shell=/usr/local/bin/bash
+set shell=/bin/bash
 set noshelltemp
 
 " Unite
