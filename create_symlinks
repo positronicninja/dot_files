@@ -23,6 +23,7 @@ sub file_names
         .inputrc
         .irbrc
         .irssi
+        .lldbinit
         .NERDTreeBookmarks
         .rdebugrc
         .rvmrc
