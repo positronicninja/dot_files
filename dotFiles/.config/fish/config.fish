@@ -1,15 +1,19 @@
 function fish_title;end
 set BROWSER 'open'
 
-set -gx PATH /usr/local/bin $PATH
-set -gx PATH /usr/local/sbin $PATH
-set -gx PATH $HOME/.rbenv/bin $PATH
-set -gx PATH $HOME/.rbenv/shims $PATH
-set -gx PATH $PATH $HOME/.rbenv/plugins/ruby-build/bin
-set -gx PATH /Applications/Postgres.app/Contents/Versions/9.3/bin $PATH
-set -gx RBENV_ROOT $HOME/.rbenv
+set -gx DISABLE_SPRING 1
 
-set SSL_CERT_FILE "/usr/local/etc/openssl/certs/cert.pem"
+set -gx PATH /opt/homebrew/bin $PATH
+set -gx PATH /opt/homebrew/sbin $PATH
+# set -gx PATH /Applications/Postgres.app/Contents/Versions/9.5/bin $PATH
+set -gx OBJC_DISABLE_INITIALIZE_FORK_SAFETY YES
+set -gx NODE_OPTIONS "--max_old_space_size=8192"
 
-. (rbenv init -|psub)
-rbenv rehash >/dev/null ^&1
+set SSL_CERT_FILE "/opt/homebrew/etc/openssl/certs/cert.pem"
+
+test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+
+# status --is-interactive; and source (rbenv init -|psub)
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+direnv hook fish | source

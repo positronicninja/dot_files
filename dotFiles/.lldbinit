@@ -11,7 +11,7 @@ command alias uikit expr @import UIKit
 command alias foundation expr @import Foundation
 
 # Facebook Chisel
-command script import /usr/local/opt/chisel/libexec/fblldb.py
+command script import /opt/homebrew/opt/chisel/libexec/fblldb.py
 command alias whoami po @(__PRETTY_FUNCTION__)
 
 # Symbolic Breakpoint

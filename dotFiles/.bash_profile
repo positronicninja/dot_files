@@ -1,9 +1,22 @@
-export PATH="/usr/local/sbin:$PATH"
-export PATH="$HOME/.rbenv/bin:$PATH"
-export SSL_CERT_FILE="/usr/local/etc/openssl/certs/cert.pem"
-export JAVA_HOME=$(/usr/libexec/java_home)
+#!/bin/bash
 
-eval "$(rbenv init -)"
+# Fig pre block. Keep at the top of this file.
+# export PATH="${PATH}:${HOME}/.local/bin"
+# eval "$(fig init bash pre)"
+
+
+export PATH="/opt/homebrew/sbin:$PATH"
+export SSL_CERT_FILE="/opt/homebrew/etc/openssl/certs/cert.pem"
+# export JAVA_HOME=$(/usr/libexec/java_home)
 
 ### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+export PATH="/opt/homebrew/heroku/bin:$PATH"
+export NODE_OPTIONS="--max_old_space_size=8192"
+
+# OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+
+# Fig post block. Keep at the bottom of this file.
+#
+
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+. /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash

@@ -1,8 +1,6 @@
----Dotfiles /Users/development/.config_files/dotFiles
---Projects /Users/development/Projects
--HopeStreet /Users/development/Projects/HopeStreet
-^hopestreet.ca /Users/development/Projects/HopeStreet/hopestreet.ca
-^office.hopestreet.ca /Users/development/Projects/HopeStreet/office.hopestreet.ca
 hosts /etc/hosts
-known_hosts /Users/development/.ssh/known_hosts
 
+---Dotfiles /Users/david/.config_files/dotFiles
+--Projects /Volumes/Projects
+Huddle /Volumes/Projects/Paradem/officespacesoftware/huddle
+known_hosts /Users/david/.ssh/known_hosts

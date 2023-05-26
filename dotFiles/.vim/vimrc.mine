@@ -107,7 +107,7 @@ map <silent> AA :set invnumber<cr>
 
 colorscheme railscasts
 
-set shell=/usr/local/bin/bash
+set shell=/opt/homebrewrew/bin/bash
 set noshelltemp
 
 " Unite
@@ -173,6 +173,9 @@ if !has('gui_running')
 endif
 " autocmd BufEnter * if !argc() && !exists("s:std_in") | NERDTreeToggle | endif
 " autocmd BufEnter * NERDTreeMirror
+
+" Fuzzy Find
+set rtp+=/opt/homebrew/opt/fzf
 
 " Folding
 set foldlevelstart=100
