@@ -1,6 +1,9 @@
 function fish_title;end
 set BROWSER 'open'
 
+alias ls 'exa --icons --octal-permissions --group-directories-first --git -lagh'
+alias tk 'tokei -e "*.d"'
+
 set -gx DISABLE_SPRING 1
 
 set -gx PATH /opt/homebrew/bin $PATH
